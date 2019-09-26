@@ -8,10 +8,8 @@
 
 import UIKit
 
-extension AppDelegate{
-
-	func launchNavtigation(){
-
+extension AppDelegate {
+	func launchNavtigation() {
 		let navController = RouterView.sharedInstance
 		navController.presenter = Router(view: navController)
 
@@ -19,7 +17,7 @@ extension AppDelegate{
 
 		navController.navigationBar.isTranslucent = false
 
-		self.window =  UIWindow(frame: UIScreen.main.bounds)
+		self.window = UIWindow(frame: UIScreen.main.bounds)
 
 		self.window?.rootViewController = navController
 		self.window?.makeKeyAndVisible()

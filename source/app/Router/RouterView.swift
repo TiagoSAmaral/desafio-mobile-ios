@@ -8,14 +8,12 @@
 
 import UIKit
 
-protocol RouterViewInterface: class{
-
+protocol RouterViewInterface: class {
 	func setViewControllers(_: [UIViewController], animated: Bool)
 	func pushViewController(_: UIViewController, animated: Bool)
 }
 
 class RouterView: UINavigationController, RouterViewInterface {
-
 	static let sharedInstance = RouterView()
 	var presenter: RouterInterface?
 
@@ -28,9 +26,8 @@ class RouterView: UINavigationController, RouterViewInterface {
 		return .lightContent
 	}
 
-	func setStyles(){
-
-		self.navigationBar.barTintColor = UIColor(red: 231.0/255.0, green: 111.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+	func setStyles() {
+		self.navigationBar.barTintColor = UIColor(red: 231.0 / 255.0, green: 111.0 / 255.0, blue: 0.0 / 255.0, alpha: 1.0)
 		self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 		self.navigationBar.tintColor = .white
 	}

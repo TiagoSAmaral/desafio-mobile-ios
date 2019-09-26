@@ -9,7 +9,6 @@
 import Foundation
 
 enum JsonPropertys {
-
 	case identifier
 	case labelIdentifier
 	case name
@@ -29,10 +28,8 @@ enum JsonPropertys {
 	case yyyyMMddTHHmmssZ
 	case ddMMyyyyHHmmss
 
-	var content: String{
-
+	var content: String {
 		switch self {
-
 		case .identifier:
 			return "id"
 		case .name:

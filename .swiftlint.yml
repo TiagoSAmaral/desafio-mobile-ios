@@ -1,6 +1,22 @@
 # https://raw.githubusercontent.com/Fueled/swiftlint-yml/master/.swiftlint.yml
 
 whitelist_rules:
+  # - vertical_whitespace_opening_braces
+  - cyclomatic_complexity
+  - opening_brace
+  - operator_usage_whitespace
+  - duplicate_imports
+  - vertical_whitespace_closing_braces
+  - closure_end_indentation
+  - closure_body_length
+  - discouraged_optional_boolean
+  - first_where
+  - force_cast
+  - force_unwrapping
+  - implicit_return
+  - last_where
+  - nesting
+
   - block_based_kvo
   - class_delegate_protocol
   - closing_brace
@@ -67,6 +83,9 @@ whitelist_rules:
   - void_return
   - weak_delegate
   - xctfail_message
+closure_body_length: 
+  warning: 25
+  error: 30
 included: # paths to include during linting. `--path` is ignored if present.
   - source/app
 excluded: # paths to ignore during linting. Takes precedence over `included`.
@@ -76,10 +95,11 @@ type_body_length:
   warning: 300
   error: 400
 line_length:
-  warning: 300
-  error: 320 # Default is 200, so swiftlint would output an error if the file length is between 200 and 220
+  warning: 250
+  error: 300 # Default is 200, so swiftlint would output an error if the file length is between 200 and 220
 file_length:
-  warning: 600
+  warning: 250
+  error: 300
 type_name:
   min_length: 2
   max_length: 60
@@ -142,25 +162,6 @@ custom_rules:
         match_kinds:
           - keyword
         severity: warning
-    computed_property:
-        name: "Computed Properties"
-        message: "The get clause should be omitted if the computed property is read only"
-        regex: "var[[:space:]]+[^:]+:[^{]*\\{[[:space:]]*get[[:space:]]*\\{[^}]+\\}(?![[:space:]]*set)"
-        match_kinds:
-          - keyword
-        severity: warning
-    # indentation_character:
-    #     name: "Indentation"
-    #     message: "Tabs should be used rather than spaces. This error may not be displayed exactly at the location of the violation but just above it."
-    #     regex: "[^\n]*\n+ +"
-    #     severity: error
-    opening_brace:
-        name: "Opening brace"
-        message: "Opening braces should be preceded by a single space and on the same line as the declaration, or optionally on a new line if the statement is multiline."
-        regex: "(?<=\\s)(?<!#)(?:(?:(?#Edge case keywords)let|var)[^=]+=(?:|[[:blank:]]{2,}|\\s+\n\\s*)\\{|(?:(?#Keywords that can be followed by a multiline contruct)switch|func|if|guard|while)\\s+(?:(?#Multiline construct)(?:[^\n]*\\}[[:blank:]]*\\)*)(?:[^{\n]+else)?(?=\\s*\\{)[[:blank:]]*+(?:\n\\s*| {2,})\\{|(?#Single construct)(?:.*\\}[[:blank:]]*\\)*)(?:[^{]+else)?(?=\\s*\\{)(?:\n| ){2,}\\{|[^{\n]*(?:[^\n{]+else)?(?=\\s*\\{)(?:\n\\s*| {2,})\\{)|(?:(?#Keywords that should always be strictly single line)deinit|case|do|for|enum|catch|init|subscript|get|set|willSet|didSet|repeat|struct|class|extension|catch|protocol)[^\n{]*(?<![[:blank:]])(?:\n\\s*| {2,})?\\{)"
-        match_kinds:
-          - keyword
-        severity: error
     nested_self_usage:
         name: "Nested .self usage"
         message: ".self shouldn't be used more than once on a given statement"

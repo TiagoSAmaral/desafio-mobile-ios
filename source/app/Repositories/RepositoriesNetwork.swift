@@ -9,20 +9,14 @@
 import UIKit
 
 class RepositoriesNetwork: NSObject {
-
 	var apiNetwork: APIInterface = API()
 	var network: NetworkInterface = Network()
 
-	func listRepositoriesJavaWith(page: Int, completion: @escaping ([Repository]?, Error?) -> Void ){
-
+	func listRepositoriesJavaWith(page: Int, completion: @escaping ([Repository]?, Error?) -> Void ) {
 		self.network.request(self.apiNetwork.urlListJavaRepositories(at: page), operation: .get, header: nil, params: nil) { (json, error) in
-
 			if error != nil {
-
 				completion(nil, error)
-
 				} else {
-
 				completion(Repository.generateMany(json: json!), nil)
 			}
 		}

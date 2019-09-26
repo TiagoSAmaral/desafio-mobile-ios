@@ -11,7 +11,6 @@ import SwiftyJSON
 import RealmSwift
 
 class PullRequest: Object {
-
 	@objc dynamic var author: String = JsonPropertys.empty.content
 	@objc dynamic var photo: String = JsonPropertys.empty.content
 	@objc dynamic var title: String = JsonPropertys.empty.content
@@ -24,7 +23,6 @@ class PullRequest: Object {
 	@objc dynamic var page: Int = 0
 
 	static func generate(json: JSON) -> PullRequest {
-
 		let pullRequest = PullRequest()
 
 		pullRequest.author = json[JsonPropertys.user.content][JsonPropertys.login.content].string!
@@ -38,14 +36,12 @@ class PullRequest: Object {
 	}
 
 	static func generateMany(json: JSON) -> [PullRequest] {
-
 		var pullRequests =  [PullRequest]()
 		guard let items = json.array else {
 			return [PullRequest]()
 		}
 
 		for pull in items {
-
 			pullRequests.append(PullRequest.generate(json: pull))
 		}
 
@@ -53,7 +49,6 @@ class PullRequest: Object {
 	}
 
 	static func dateFormatter (stringDate: String) -> String {
-
 		let fomatter = DateFormatter()
 		fomatter.dateFormat = JsonPropertys.yyyyMMddTHHmmssZ.content
 		let date = fomatter.date(from: stringDate)!

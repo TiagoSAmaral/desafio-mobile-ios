@@ -10,7 +10,6 @@ import UIKit
 import Kingfisher
 import SwiftIconFont
 class RepositoryCell: UITableViewCell {
-
 	@IBOutlet weak var name: UILabel!
 	@IBOutlet weak var photo: UIImageView!
 	@IBOutlet weak var ownername: UILabel!
@@ -32,7 +31,6 @@ class RepositoryCell: UITableViewCell {
     }
 
 	func setupCell(data: Repository) {
-
 		self.name.text = data.name
 		self.detail.text = data.detail
 		self.ownername.text = data.author
@@ -46,19 +44,16 @@ class RepositoryCell: UITableViewCell {
 		}
 	}
 
-	func endDisplay(){
-
+	func endDisplay() {
 		self.photo.kf.cancelDownloadTask()
 	}
 
-	func setupView(){
-
+	func setupView() {
 		self.photo.layer.cornerRadius = self.photo.frame.size.width / 2
 		self.photo.clipsToBounds = true
 	}
 
-	func buildIconText(label: UILabel, fontSize: CGFloat, text: String, fontName: String){
-
+	func buildIconText(label: UILabel, fontSize: CGFloat, text: String, fontName: String) {
 		label.font = UIFont.icon(from: .fontAwesome, ofSize: fontSize)
 		var icon = String.fontAwesomeIcon(fontName)!
 		icon.append(" \(text)")

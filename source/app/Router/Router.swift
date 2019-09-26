@@ -9,12 +9,10 @@
 import UIKit
 
 protocol RouterInterface {
-
 	func goTo(destiny: Routes, pushForward data: Any?)
 }
 
 class Router: NSObject, RouterInterface {
-
 	weak var view: RouterViewInterface?
 
 	init(view: RouterViewInterface) {
@@ -24,21 +22,26 @@ class Router: NSObject, RouterInterface {
 	}
 
 	func goTo(destiny: Routes, pushForward data: Any?) {
-
 		switch destiny {
-
 		case .repositories:
 
-			let viewInstance = buildView(destiny.file, RepositoriesViewController.identifier, RepositoriesViewController.self)
+			guard let viewInstance = buildView(destiny.file, RepositoriesViewController.identifier, RepositoriesViewController.self) else {
+				return
+			}
 
 			viewInstance.presenter = Repositories(view: viewInstance, router: self)
 			self.view?.setViewControllers([viewInstance], animated: false)
 
 		case .pullrequests:
 
-			let viewInstance = buildView(destiny.file, PullRequestsViewController.identifier, PullRequestsViewController.self)
+			guard let data = data as? Repository else {
+				return
+			}
+			guard let viewInstance = buildView(destiny.file, PullRequestsViewController.identifier, PullRequestsViewController.self) else {
+				return
+			}
 
-			viewInstance.presenter = PullRequests(view: viewInstance, router: self, repository: data as! Repository)
+			viewInstance.presenter = PullRequests(view: viewInstance, router: self, repository: data)
 			self.view?.pushViewController(viewInstance, animated: true)
 
 		case .linkBrowser:
@@ -46,13 +49,17 @@ class Router: NSObject, RouterInterface {
 			guard let validStringUrl = data as? String else {
 				return
 			}
-
-			UIApplication.shared.openURL(URL(string: validStringUrl)!)
+			guard let stringURL = URL(string: validStringUrl) else {
+				return
+			}
+            UIApplication.shared.open(stringURL, options: ["": ""], completionHandler: nil)
 		}
 	}
 
-	func buildView<T>(_ nameFile: String, _ identifier: String, _ viewClass: T.Type) -> T{
-
-		return UIStoryboard(name: nameFile, bundle: nil).instantiateViewController(withIdentifier: identifier) as! T
+	func buildView<T>(_ nameFile: String, _ identifier: String, _ viewClass: T.Type) -> T? {
+		guard let result = UIStoryboard(name: nameFile, bundle: nil).instantiateViewController(withIdentifier: identifier) as? T else {
+			return nil
+		}
+		return result
 	}
 }

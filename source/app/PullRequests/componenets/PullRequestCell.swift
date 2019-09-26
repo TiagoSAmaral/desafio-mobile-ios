@@ -9,7 +9,6 @@
 import UIKit
 
 class PullRequestCell: UITableViewCell {
-
 	@IBOutlet weak var name: UILabel!
 	@IBOutlet weak var detail: UILabel!
 	@IBOutlet weak var photo: UIImageView!
@@ -30,7 +29,6 @@ class PullRequestCell: UITableViewCell {
     }
 
 	func setupCell(data: PullRequest) {
-
 		self.name.text = data.title
 		self.detail.text = data.body
 		self.ownername.text = data.author
@@ -43,13 +41,11 @@ class PullRequestCell: UITableViewCell {
 		}
 	}
 
-	func endDisplay(){
-
+	func endDisplay() {
 		self.photo.kf.cancelDownloadTask()
 	}
 
-	func setupView(){
-
+	func setupView() {
 		self.photo.layer.cornerRadius = self.photo.frame.size.width / 2
 		self.photo.clipsToBounds = true
 	}

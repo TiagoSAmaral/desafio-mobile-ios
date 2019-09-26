@@ -8,10 +8,9 @@
 
 import Foundation
 
-protocol Identifier{}
+protocol Identifier {}
 
-extension Identifier where Self: NSObject{
-
+extension Identifier where Self: NSObject {
 	static var identifier: String { return String(describing: self) }
 }
 

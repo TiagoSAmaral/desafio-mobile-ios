@@ -9,15 +9,12 @@
 import Foundation
 
 enum Routes {
-
 	case repositories
 	case pullrequests
 	case linkBrowser
 
-	var file: String{
-
+	var file: String {
 		switch self {
-
 		case .repositories:
 			return "RepositoriesView"
 		case .pullrequests:

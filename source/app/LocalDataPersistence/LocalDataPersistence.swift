@@ -11,26 +11,20 @@ import Realm
 import RealmSwift
 
 class LocalDataPersistence: NSObject {
-
 	private let realm = try! Realm()
 
 	func saveItens(items: [Object], reNew: Bool) {
-
 		try!  realm.write {
 			realm.add(items, update: reNew)
 		}
 	}
 
-	func updateRepo(newPulls: [PullRequest]?, into repo: Repository, clear: Bool){
-
+	func updateRepo(newPulls: [PullRequest]?, into repo: Repository, clear: Bool) {
 		if clear {
-
 			try!  realm.write {
 				realm.delete(repo.pullrequests)
 			}
-
 		} else {
-
 			try!  realm.write {
 				repo.pullrequests.append(objectsIn: newPulls!)
 				realm.add(repo, update: true)
@@ -45,12 +39,10 @@ class LocalDataPersistence: NSObject {
 	}
 
 	func list<T: Object>(query: String?, entity: T.Type, property: String, isAcendent: Bool) -> [T] {
-
 		var result = realm.objects(entity)
 
-		if query != nil {
-
-			result = result.filter(query!)
+		if let query = query {
+			result = result.filter(query)
 		}
 
 		return Array(result.sorted(byKeyPath: property, ascending: isAcendent))

@@ -9,9 +9,7 @@
 import Foundation
 
 struct EnviromentIdentifier {
-
 	var  enviroment: String {
-
 		guard let enviromentString = Bundle.main.infoDictionary?["ENVIRONMENT"] as? String else {
 			return ""
 		}
