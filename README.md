@@ -1,5 +1,5 @@
 # JavaHub
-[![Swift Version](https://img.shields.io/badge/swift-iOS%208*-success)]()
+[![Swift Version](https://img.shields.io/badge/iOS-10.*-success)]()
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform iOS](https://img.shields.io/badge/platform-iOS-informational)]()
 [![Swiftlint](https://img.shields.io/badge/-Swiftlint-success)]()
@@ -13,7 +13,7 @@ pertinentes ao desenvolvimento para iOS nativo.
 
 Sua aplicação deve:
 
-- :white_check_mark: suportar versão mínima do iOS: 8.*.
+- :white_check_mark: suportar versão mínima do iOS: 10.*.
 - :white_check_mark: usar um arquivo .gitignore no seu repositório
 - :white_check_mark: usar Storyboard e Autolayout
 - :white_check_mark: usar gestão de dependências no projeto. Ex: Cocoapods
