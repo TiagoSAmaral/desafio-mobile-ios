@@ -5,7 +5,7 @@
 [![Swiftlint](https://img.shields.io/badge/-Swiftlint-success)]()
 [![Ruby Version](https://img.shields.io/badge/ruby-2.5.1p57-red)]()
 [![Fastlane Version](https://img.shields.io/badge/Fastlane%20-v2.98.0-blue)]()
-[![https://img.shields.io/badge/coverage-85.73%25-succe]()]()
+[![Code Coverage](https://img.shields.io/badge/coverage-85.73%25-succe)]()
 
 
   Este projeto é uma aplicação feita em Swift para iOS, onde é demonstrado o uso do padrão MVP e algumas ferramentas
