@@ -61,7 +61,7 @@ Sua aplicação deve:
 
  ## Executando o projeto ##
 
-  É necessário estar usando o Xcode v9.4 com Swift v4.2 (https://developer.apple.com/xcode/)
+  Projeto atualizado para Swift 5 (https://developer.apple.com/xcode/)
   
   - Carthage  v0.29.0 (https://github.com/Carthage/Carthage#installing-carthage)
   - Fastlane v2.98.0 (https://docs.fastlane.tools/getting-started/ios/setup/)
