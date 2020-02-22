@@ -38,7 +38,7 @@ class NetworkTests: QuickSpec {
 
 				it("Test GET", closure: { waitUntil { done in
 
-					networkHandler.request("http://localhost/simple", operation: .get, header: nil, params: nil, completion: { (result, error) in
+					networkHandler.request("http://localhost/simple", operation: .get, headers: nil, params: nil, completion: { (result, error) in
 
 						expect(result!).toNot(beNil())
 						expect(result!["result"]["message"].string!).to(equal("json request mock"))

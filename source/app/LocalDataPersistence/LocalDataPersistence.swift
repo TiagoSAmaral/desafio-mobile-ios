@@ -17,7 +17,8 @@ class LocalDataPersistence: NSObject {
 	func saveItens(items: [Object], reNew: Bool) {
 
 		try!  realm.write {
-			realm.add(items, update: reNew)
+//			realm.add(items, update: reNew)
+            realm.add(items, update: reNew ? .all: .error)
 		}
 	}
 
@@ -33,7 +34,7 @@ class LocalDataPersistence: NSObject {
 
 			try!  realm.write {
 				repo.pullrequests.append(objectsIn: newPulls!)
-				realm.add(repo, update: true)
+                realm.add(repo, update: .all)
 			}
 		}
 	}

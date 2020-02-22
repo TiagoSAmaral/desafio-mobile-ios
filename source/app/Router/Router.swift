@@ -29,7 +29,7 @@ class Router: NSObject, RouterInterface {
 
 		case .repositories:
 
-			let viewInstance = buildView(destiny.file, RepositoriesViewController.identifier, RepositoriesViewController.self)
+			let viewInstance =   buildView(destiny.file, RepositoriesViewController.identifier, RepositoriesViewController.self)
 
 			viewInstance.presenter = Repositories(view: viewInstance, router: self)
 			self.view?.setViewControllers([viewInstance], animated: false)

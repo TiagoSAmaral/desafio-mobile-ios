@@ -20,17 +20,17 @@ class Stubs {
 			guard let productsStub = stub else { preconditionFailure(file + ".json not found!") }
 
 			print("\nLoad Stub in \(file) \n")
-			return OHHTTPStubsResponse(fileAtPath: productsStub, statusCode: 200, headers: [ "ContentType": "application/json" ])
+            
+            
+            return HTTPStubsResponse(fileAtPath: productsStub, statusCode: 200, headers: [ "ContentType": "application/json" ])
 		}
-
-		OHHTTPStubs.setEnabled(true)
+        
+        HTTPStubs.setEnabled(true)
 	}
 
 	func clearStubs(){
-
-		OHHTTPStubs.removeAllStubs()
+        HTTPStubs.removeAllStubs()
 	}
-
 
 	static func loadFile(with name: String, in bundleClass: AnyClass) -> JSON {
 

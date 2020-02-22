@@ -15,30 +15,38 @@ protocol NetworkInterface{
 	func request(
 		_ address: String,
 		operation: HTTPMethod,
-		header: [String: String]?,
-		params: [String: Any]?,
+		headers: [String: String]?,
+		params: [String: String]?,
 		completion: @escaping (JSON?, Error?) -> Void)
 }
 
 class Network: NSObject, NetworkInterface {
 
-	func request(_ address: String, operation: HTTPMethod, header: [String: String]?, params: [String: Any]?, completion: @escaping (JSON?, Error?) -> Void) {
+	func request(_ address: String, operation: HTTPMethod, headers: [String: String]?, params: [String: String]?, completion: @escaping (JSON?, Error?) -> Void) {
 
-		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        guard let urlInstance: URL = URL(string: address) else {
+            return
+        }
 
-		let urlInstance: URL = URL(string: address)!
-		Alamofire.request(urlInstance, method: operation, parameters: params, encoding: URLEncoding.default, headers: header).responseJSON { (response) in
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        var newHeadersHTTP: HTTPHeaders?
+        if let headersNotNil = headers {
+           newHeadersHTTP = HTTPHeaders(headersNotNil)
+        }
+
+        AF.request(urlInstance,
+                   method: operation,
+                   parameters: params,
+                   encoding: URLEncoding.default,
+                   headers: newHeadersHTTP,
+                   interceptor: nil).responseJSON { response in
 
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 
 			switch response.result {
-
 			case .success(let value):
-
 				completion(JSON(value), nil)
-
 			case .failure(let error):
-
 				completion(nil, error)
 			}
 		}

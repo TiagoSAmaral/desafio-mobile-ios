@@ -67,7 +67,7 @@ class PullRequestsViewController: UITableViewController, PullRequestsViewInterfa
 
 	func setupTableView(){
 
-		self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.rowHeight = UITableView.automaticDimension
 		self.tableView.estimatedRowHeight = 220
 		self.tableView.tableFooterView = UIView()
 	}
@@ -80,7 +80,7 @@ class PullRequestsViewController: UITableViewController, PullRequestsViewInterfa
 
 	func showAlert() {
 
-		let alert = UIAlertController(title: "Não foi possível concluir a operação", message: self.presenter!.message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Não foi possível concluir a operação", message: self.presenter!.message, preferredStyle: UIAlertController.Style.alert)
 		alert.addAction(UIAlertAction(title: "Fechar", style: .default, handler: { _ in
 
 			self.disableLoading()

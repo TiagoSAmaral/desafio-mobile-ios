@@ -40,6 +40,6 @@ extension UITableViewController {
 
 	func setBackButtonTitle(with text: String) {
 
-		self.navigationItem.backBarButtonItem = UIBarButtonItem(title: text, style: UIBarButtonItemStyle.plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: text, style: UIBarButtonItem.Style.plain, target: nil, action: nil)
 	}
 }

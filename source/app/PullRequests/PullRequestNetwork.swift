@@ -17,7 +17,7 @@ class PullRequestNetwork: NSObject {
 
 		let listPullUrl = apiNetwork.urlListPullsJavaRepositories(with: author, in: repoName, at: page)
 
-		self.network.request(listPullUrl, operation: .get, header: nil, params: nil) { (json, error) in
+		self.network.request(listPullUrl, operation: .get, headers: nil, params: nil) { (json, error) in
 
 			if error != nil {
 				completion(nil, error)
